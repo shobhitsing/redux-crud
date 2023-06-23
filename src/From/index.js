@@ -53,7 +53,9 @@ const From = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    dispatch(userPosts(formData));
+    navigate("/list");
+    toast.success("Success message!");
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -64,10 +66,7 @@ const From = () => {
     } else {
       setPasswordsMatch(false);
     }
-
-    dispatch(userPosts(formData));
-    navigate("/list");
-    toast.success("Success message!");
+  
 
     // console.log("status", responces.data);
   };
